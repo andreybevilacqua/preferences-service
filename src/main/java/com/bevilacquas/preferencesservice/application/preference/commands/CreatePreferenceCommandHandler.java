@@ -9,11 +9,11 @@ import com.bevilacquas.preferencesservice.infrastructure.persistence.Preferences
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreatePreference implements Command.Handler<CreatePreferenceCommand, PreferenceResponse> {
+public class CreatePreferenceCommandHandler implements Command.Handler<CreatePreferenceCommand, PreferenceResponse> {
 
   private final PreferencesRepository repo;
 
-  public CreatePreference(PreferencesRepository repo) {
+  public CreatePreferenceCommandHandler(PreferencesRepository repo) {
     this.repo = repo;
   }
 
@@ -21,7 +21,8 @@ public class CreatePreference implements Command.Handler<CreatePreferenceCommand
   public PreferenceResponse handle(CreatePreferenceCommand command) {
     return buildFromPreference
         (repo.save(
-            buildFromPreferenceRequest(command.pr())
+            buildFromPreferenceRequest(
+                command.pr())
             )
         );
   }
