@@ -16,6 +16,7 @@ public class Preference {
   @Column
   private String name;
 
+  @SuppressWarnings("unused")
   public Preference() {}
   public Preference(UUID id, String name) {
     this.id = id;
