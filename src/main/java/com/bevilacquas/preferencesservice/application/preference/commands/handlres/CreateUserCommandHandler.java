@@ -1,6 +1,7 @@
-package com.bevilacquas.preferencesservice.application.preference.commands;
+package com.bevilacquas.preferencesservice.application.preference.commands.handlres;
 
 import an.awesome.pipelinr.Command;
+import com.bevilacquas.preferencesservice.application.preference.commands.CreateUserCommand;
 import com.bevilacquas.preferencesservice.application.preference.response.UserResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UsersRepository;
 import org.springframework.stereotype.Component;

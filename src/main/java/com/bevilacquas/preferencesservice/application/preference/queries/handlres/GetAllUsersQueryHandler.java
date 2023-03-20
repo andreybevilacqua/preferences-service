@@ -1,6 +1,7 @@
-package com.bevilacquas.preferencesservice.application.preference.queries;
+package com.bevilacquas.preferencesservice.application.preference.queries.handlres;
 
 import an.awesome.pipelinr.Command;
+import com.bevilacquas.preferencesservice.application.preference.queries.GetAllUsersQuery;
 import com.bevilacquas.preferencesservice.application.preference.response.UserResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UsersRepository;
 import org.springframework.stereotype.Component;

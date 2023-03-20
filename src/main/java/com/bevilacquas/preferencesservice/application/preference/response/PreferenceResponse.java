@@ -1,4 +1,4 @@
-package com.bevilacquas.preferencesservice.application.preference;
+package com.bevilacquas.preferencesservice.application.preference.response;
 
 import com.bevilacquas.preferencesservice.domain.entities.Preference;
 import java.util.UUID;
