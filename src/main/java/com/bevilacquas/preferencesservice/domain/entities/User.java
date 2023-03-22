@@ -1,6 +1,6 @@
 package com.bevilacquas.preferencesservice.domain.entities;
 
-import com.bevilacquas.preferencesservice.application.preference.request.UserRequest;
+import com.bevilacquas.preferencesservice.application.user.UserRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -2,10 +2,10 @@ package com.bevilacquas.preferencesservice.api;
 
 import an.awesome.pipelinr.Command;
 import an.awesome.pipelinr.Pipeline;
-import com.bevilacquas.preferencesservice.application.preference.commands.CreateUserCommand;
-import com.bevilacquas.preferencesservice.application.preference.queries.GetAllUsersQuery;
-import com.bevilacquas.preferencesservice.application.preference.request.UserRequest;
-import com.bevilacquas.preferencesservice.application.preference.response.UserResponse;
+import com.bevilacquas.preferencesservice.application.user.command.CreateUserCommand;
+import com.bevilacquas.preferencesservice.application.user.query.GetAllUsersQuery;
+import com.bevilacquas.preferencesservice.application.user.UserRequest;
+import com.bevilacquas.preferencesservice.application.user.UserResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,7 +2,7 @@ package com.bevilacquas.preferencesservice.domain.entities;
 
 import static java.util.UUID.randomUUID;
 
-import com.bevilacquas.preferencesservice.application.preference.request.PreferenceRequest;
+import com.bevilacquas.preferencesservice.application.preference.PreferenceRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

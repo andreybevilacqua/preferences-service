@@ -5,8 +5,8 @@ import static org.springframework.http.HttpStatus.OK;
 
 import an.awesome.pipelinr.Command;
 import an.awesome.pipelinr.Pipeline;
-import com.bevilacquas.preferencesservice.application.preference.request.PreferenceRequest;
-import com.bevilacquas.preferencesservice.application.preference.response.PreferenceResponse;
+import com.bevilacquas.preferencesservice.application.preference.PreferenceRequest;
+import com.bevilacquas.preferencesservice.application.preference.PreferenceResponse;
 import com.bevilacquas.preferencesservice.application.preference.commands.CreatePreferenceCommand;
 import com.bevilacquas.preferencesservice.application.preference.queries.GetAllPreferencesQuery;
 import java.util.List;
