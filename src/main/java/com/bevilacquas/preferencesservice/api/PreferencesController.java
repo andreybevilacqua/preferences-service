@@ -8,14 +8,18 @@ import an.awesome.pipelinr.Pipeline;
 import com.bevilacquas.preferencesservice.application.preference.PreferenceRequest;
 import com.bevilacquas.preferencesservice.application.preference.PreferenceResponse;
 import com.bevilacquas.preferencesservice.application.preference.commands.CreatePreferenceCommand;
+import com.bevilacquas.preferencesservice.application.preference.commands.DeletePreferenceCommand;
+import com.bevilacquas.preferencesservice.application.preference.commands.UpdatePreferenceCommand;
 import com.bevilacquas.preferencesservice.application.preference.queries.GetAllPreferencesQuery;
 import com.bevilacquas.preferencesservice.application.preference.queries.GetPreferenceByIdQuery;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +47,15 @@ public class PreferencesController implements Command<PreferenceResponse> {
   @PostMapping
   public ResponseEntity<PreferenceResponse> createPreference(@RequestBody PreferenceRequest pr) {
     return new ResponseEntity<>(new CreatePreferenceCommand(pr).execute(pipeline), CREATED);
+  }
+
+  @PutMapping
+  public ResponseEntity<PreferenceResponse> updatePreference(@RequestBody PreferenceRequest pr) {
+    return new ResponseEntity<>(new UpdatePreferenceCommand(pr).execute(pipeline), CREATED);
+  }
+
+  @DeleteMapping
+  public ResponseEntity<PreferenceResponse> deletePreference(@RequestBody PreferenceRequest pr) {
+    return new ResponseEntity<>(new DeletePreferenceCommand(pr).execute(pipeline), CREATED);
   }
 }
