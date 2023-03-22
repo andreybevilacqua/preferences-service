@@ -51,11 +51,11 @@ public class PreferencesController implements Command<PreferenceResponse> {
 
   @PutMapping
   public ResponseEntity<PreferenceResponse> updatePreference(@RequestBody PreferenceRequest pr) {
-    return new ResponseEntity<>(new UpdatePreferenceCommand(pr).execute(pipeline), CREATED);
+    return new ResponseEntity<>(new UpdatePreferenceCommand(pr).execute(pipeline), OK);
   }
 
   @DeleteMapping
-  public ResponseEntity<PreferenceResponse> deletePreference(@RequestBody PreferenceRequest pr) {
-    return new ResponseEntity<>(new DeletePreferenceCommand(pr).execute(pipeline), CREATED);
+  public ResponseEntity<Boolean> deletePreference(@RequestBody PreferenceRequest pr) {
+    return new ResponseEntity<>(new DeletePreferenceCommand(pr).execute(pipeline), OK);
   }
 }
