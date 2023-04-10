@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface UniversalPreferencesRepository extends JpaRepository<UniversalPreference, UUID> {
-  @Query("SELECT up FROM UniversalPreference up")
+  @Query("SELECT up FROM Universal_Preference up")
   List<UniversalPreference> getAllUniversalPreferences();
 }
