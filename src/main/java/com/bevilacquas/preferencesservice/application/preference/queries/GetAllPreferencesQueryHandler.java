@@ -3,8 +3,9 @@ package com.bevilacquas.preferencesservice.application.preference.queries;
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.preference.PreferenceResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
-import java.util.List;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class GetAllPreferencesQueryHandler implements Command.Handler<GetAllPreferencesQuery, List<PreferenceResponse>> {
@@ -17,8 +18,9 @@ public class GetAllPreferencesQueryHandler implements Command.Handler<GetAllPref
 
   @Override
   public List<PreferenceResponse> handle(GetAllPreferencesQuery command) {
-    return repo
-        .getAllPreferences()
+    return
+      repo
+        .findAll()
         .stream()
         .map(PreferenceResponse::buildFromPreference)
         .toList();

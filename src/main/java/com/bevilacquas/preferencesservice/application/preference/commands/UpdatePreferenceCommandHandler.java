@@ -1,12 +1,11 @@
 package com.bevilacquas.preferencesservice.application.preference.commands;
 
-import static com.bevilacquas.preferencesservice.application.preference.PreferenceResponse.buildFromPreference;
-import static com.bevilacquas.preferencesservice.domain.entities.Preference.buildFromPreferenceRequest;
-
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.preference.PreferenceResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
 import org.springframework.stereotype.Component;
+
+import static com.bevilacquas.preferencesservice.domain.entities.Preference.buildFromPreferenceRequest;
 
 @Component
 public class UpdatePreferenceCommandHandler implements Command.Handler<UpdatePreferenceCommand, PreferenceResponse> {
@@ -19,11 +18,11 @@ public class UpdatePreferenceCommandHandler implements Command.Handler<UpdatePre
 
   @Override
   public PreferenceResponse handle(UpdatePreferenceCommand command) {
-    return buildFromPreference
-        (repo.save(
-            buildFromPreferenceRequest(
-                command.pr())
-            )
-        );
+    return PreferenceResponse
+      .buildFromPreference(
+        repo.save(
+          buildFromPreferenceRequest(command.pr())
+        )
+      );
   }
 }

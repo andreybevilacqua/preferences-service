@@ -3,7 +3,6 @@ package com.bevilacquas.preferencesservice.application.preference.queries;
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.preference.PreferenceResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
-import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +16,6 @@ public class GetPreferenceByIdQueryHandler implements Command.Handler<GetPrefere
 
   @Override
   public PreferenceResponse handle(GetPreferenceByIdQuery command) {
-    return PreferenceResponse.buildFromPreference(repo
-                .getReferenceById(command.id()));
+    return new PreferenceResponse(repo.findById(command.id()));
   }
 }
