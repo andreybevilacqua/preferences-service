@@ -18,11 +18,6 @@ public class CreatePreferenceCommandHandler implements Command.Handler<CreatePre
 
   @Override
   public PreferenceResponse handle(CreatePreferenceCommand command) {
-    return PreferenceResponse
-      .buildFromPreference(
-        repo.save(
-          buildFromPreferenceRequest(command.pr())
-        )
-      );
+    return new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr())));
   }
 }

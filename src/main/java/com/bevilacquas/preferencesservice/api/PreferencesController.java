@@ -35,7 +35,7 @@ public class PreferencesController implements Command<PreferenceResponse> {
   @GetMapping("/{id}")
   public ResponseEntity<PreferenceResponse> getPreferenceById(@PathVariable String id) {
     var result = new GetPreferenceByIdQuery(fromString(id)).execute(pipeline);
-    if(result.preference().isPresent()) return new ResponseEntity<>(result, OK);
+    if(result != null) return new ResponseEntity<>(result, OK);
     else return new ResponseEntity<>(NOT_FOUND);
   }
 

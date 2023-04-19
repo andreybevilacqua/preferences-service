@@ -22,7 +22,7 @@ public class GetAllPreferencesQueryHandler implements Command.Handler<GetAllPref
       repo
         .findAll()
         .stream()
-        .map(PreferenceResponse::buildFromPreference)
+        .map(PreferenceResponse::new)
         .toList();
   }
 }
