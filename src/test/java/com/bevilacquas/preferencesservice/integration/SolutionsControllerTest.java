@@ -81,29 +81,29 @@ public class SolutionsControllerTest {
     mvc
       .perform(get(baseUrl))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.[0].solution.id").exists())
-      .andExpect(jsonPath("$.[0].solution.id").isString())
-      .andExpect(jsonPath("$.[0].solution.id").isNotEmpty())
-      .andExpect(jsonPath("$.[0].solution.name").value("solution1"))
-      .andExpect(jsonPath("$.[1].solution.id").exists())
-      .andExpect(jsonPath("$.[1].solution.id").isString())
-      .andExpect(jsonPath("$.[1].solution.id").isNotEmpty())
-      .andExpect(jsonPath("$.[1].solution.name").value("solution2"));
+      .andExpect(jsonPath("$.[0].id").exists())
+      .andExpect(jsonPath("$.[0].id").isString())
+      .andExpect(jsonPath("$.[0].id").isNotEmpty())
+      .andExpect(jsonPath("$.[0].name").value("solution1"))
+      .andExpect(jsonPath("$.[1].id").exists())
+      .andExpect(jsonPath("$.[1].id").isString())
+      .andExpect(jsonPath("$.[1].id").isNotEmpty())
+      .andExpect(jsonPath("$.[1].name").value("solution2"));
   }
 
   @Test
   @DisplayName("Should find solution by id")
   void getSolutionTest2() throws Exception {
     var id = randomUUID();
-    repository.save(new Solution(id, "preference1"));
+    repository.save(new Solution(id, "solution1"));
     assertEquals(1, repository.findAll().size());
     mvc
       .perform(get(baseUrl + "/" + id))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.solution.id").exists())
-      .andExpect(jsonPath("$.solution.id").isString())
-      .andExpect(jsonPath("$.solution.id").isNotEmpty())
-      .andExpect(jsonPath("$.solution.name").value("solution1"));
+      .andExpect(jsonPath("$.id").exists())
+      .andExpect(jsonPath("$.id").isString())
+      .andExpect(jsonPath("$.id").isNotEmpty())
+      .andExpect(jsonPath("$.name").value("solution1"));
   }
 
   @Test
