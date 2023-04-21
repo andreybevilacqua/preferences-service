@@ -1,13 +1,13 @@
 package com.bevilacquas.preferencesservice.application.solution.commands;
 
-import static com.bevilacquas.preferencesservice.application.solution.SolutionResponse.*;
-import static com.bevilacquas.preferencesservice.domain.entities.Solution.*;
-
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.solution.SolutionResponse;
-import com.bevilacquas.preferencesservice.domain.entities.Solution;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.SolutionRepository;
+import org.springframework.stereotype.Component;
 
+import static com.bevilacquas.preferencesservice.application.solution.SolutionResponse.buildFromSolution;
+
+@Component
 public class UpdateSolutionCommandHandler implements Command.Handler<UpdateSolutionCommand, SolutionResponse> {
 
   private final SolutionRepository repo;
@@ -17,9 +17,10 @@ public class UpdateSolutionCommandHandler implements Command.Handler<UpdateSolut
   }
   @Override
   public SolutionResponse handle(UpdateSolutionCommand command) {
-    return buildFromSolution(
-        repo.save(
-            buildFromSolutionRequest(command.sr()))
-    );
+    return
+      repo
+        .findByName(command.sr().name())
+        .map(s -> buildFromSolution(repo.save(s)))
+        .orElse(null);
   }
 }

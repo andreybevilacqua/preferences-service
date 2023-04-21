@@ -3,7 +3,9 @@ package com.bevilacquas.preferencesservice.application.solution.commands;
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.domain.entities.Solution;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.SolutionRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DeleteSolutionCommandHandler implements Command.Handler<DeleteSolutionCommand, Boolean> {
 
   private final SolutionRepository repo;
@@ -14,8 +16,11 @@ public class DeleteSolutionCommandHandler implements Command.Handler<DeleteSolut
   @Override
   public Boolean handle(DeleteSolutionCommand command) {
     try{
-      repo.delete(Solution.buildFromSolutionRequest(command.sr()));
-      return true;
+      var optSolution = repo.findByName(command.sr().name());
+      if(optSolution.isPresent()) {
+        repo.delete(optSolution.get());
+        return true;
+      } else return false;
     } catch (Exception e) {
       System.out.println("Error deleting solution: " + e.getMessage());
       return false;

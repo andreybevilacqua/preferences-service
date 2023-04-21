@@ -3,8 +3,9 @@ package com.bevilacquas.preferencesservice.application.solution.queries;
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.solution.SolutionResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.SolutionRepository;
-import java.util.UUID;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetSolutionByIdQueryHandler implements Command.Handler<GetSolutionByIdQuery, SolutionResponse> {
 
   private final SolutionRepository repo;
@@ -15,6 +16,10 @@ public class GetSolutionByIdQueryHandler implements Command.Handler<GetSolutionB
 
   @Override
   public SolutionResponse handle(GetSolutionByIdQuery command) {
-    return SolutionResponse.buildFromSolution(repo.getReferenceById(command.id()));
+    return
+      repo
+        .findById(command.id())
+        .map(SolutionResponse::buildFromSolution)
+        .orElse(null);
   }
 }
