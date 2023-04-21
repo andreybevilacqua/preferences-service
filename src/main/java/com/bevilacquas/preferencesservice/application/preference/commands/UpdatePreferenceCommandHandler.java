@@ -21,7 +21,7 @@ public class UpdatePreferenceCommandHandler implements Command.Handler<UpdatePre
     return
       repo
         .findByName(command.pr().name())
-        .map(p -> new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr()))))
+        .map(p -> PreferenceResponse.buildFromPreference(repo.save(buildFromPreferenceRequest(command.pr()))))
         .orElse(null);
   }
 }

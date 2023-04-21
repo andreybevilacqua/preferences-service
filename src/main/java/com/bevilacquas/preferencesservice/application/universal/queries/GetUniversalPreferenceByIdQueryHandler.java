@@ -15,8 +15,6 @@ public class GetUniversalPreferenceByIdQueryHandler implements Command.Handler<G
   }
   @Override
   public UniversalPreferenceResponse handle(GetUniversalPreferenceByIdQuery command) {
-    return UniversalPreferenceResponse.buildFromUniversalPreference(
-        repo.getById(command.id())
-    );
+    return UniversalPreferenceResponse.buildFromUniversalPreference(repo.getById(command.id()));
   }
 }

@@ -17,7 +17,7 @@ public class GetPreferenceByIdQueryHandler implements Command.Handler<GetPrefere
   @Override
   public PreferenceResponse handle(GetPreferenceByIdQuery command) {
     return repo.findById(command.id())
-        .map(PreferenceResponse::new)
+        .map(PreferenceResponse::buildFromPreference)
         .orElse(null);
   }
 }

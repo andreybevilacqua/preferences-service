@@ -6,6 +6,7 @@ import com.bevilacquas.preferencesservice.application.preference.PreferenceRespo
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
 import org.springframework.stereotype.Component;
 
+import static com.bevilacquas.preferencesservice.application.preference.PreferenceResponse.buildFromPreference;
 import static com.bevilacquas.preferencesservice.domain.entities.Preference.buildFromPreferenceRequest;
 
 @Component
@@ -19,7 +20,7 @@ public class CreatePreferenceCommandHandler implements Command.Handler<CreatePre
 
   @Override
   public PreferenceResponse handle(CreatePreferenceCommand command) {
-    if(validatePreferenceRequest(command.pr())) return new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr())));
+    if(validatePreferenceRequest(command.pr())) return buildFromPreference(repo.save(buildFromPreferenceRequest(command.pr())));
     else return null;
   }
 

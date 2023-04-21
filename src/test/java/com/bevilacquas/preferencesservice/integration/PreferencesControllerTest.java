@@ -79,14 +79,14 @@ public class PreferencesControllerTest {
     mvc
       .perform(get(baseUrl))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.[0].preference.id").exists())
-      .andExpect(jsonPath("$.[0].preference.id").isString())
-      .andExpect(jsonPath("$.[0].preference.id").isNotEmpty())
-      .andExpect(jsonPath("$.[0].preference.name").value("preference1"))
-      .andExpect(jsonPath("$.[1].preference.id").exists())
-      .andExpect(jsonPath("$.[1].preference.id").isString())
-      .andExpect(jsonPath("$.[1].preference.id").isNotEmpty())
-      .andExpect(jsonPath("$.[1].preference.name").value("preference2"));
+      .andExpect(jsonPath("$.[0].id").exists())
+      .andExpect(jsonPath("$.[0].id").isString())
+      .andExpect(jsonPath("$.[0].id").isNotEmpty())
+      .andExpect(jsonPath("$.[0].name").value("preference1"))
+      .andExpect(jsonPath("$.[1].id").exists())
+      .andExpect(jsonPath("$.[1].id").isString())
+      .andExpect(jsonPath("$.[1].id").isNotEmpty())
+      .andExpect(jsonPath("$.[1].name").value("preference2"));
   }
 
   @Test
@@ -98,10 +98,10 @@ public class PreferencesControllerTest {
     mvc
       .perform(get(baseUrl + "/" + id))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.preference.id").exists())
-      .andExpect(jsonPath("$.preference.id").isString())
-      .andExpect(jsonPath("$.preference.id").isNotEmpty())
-      .andExpect(jsonPath("$.preference.name").value("preference1"));
+      .andExpect(jsonPath("$.id").exists())
+      .andExpect(jsonPath("$.id").isString())
+      .andExpect(jsonPath("$.id").isNotEmpty())
+      .andExpect(jsonPath("$.name").value("preference1"));
   }
 
   @Test
@@ -126,10 +126,10 @@ public class PreferencesControllerTest {
           .contentType(APPLICATION_JSON)
           .content(objToJson(new PreferenceRequest("preference new name"))))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.preference.id").exists())
-      .andExpect(jsonPath("$.preference.id").isString())
-      .andExpect(jsonPath("$.preference.id").isNotEmpty())
-      .andExpect(jsonPath("$.preference.name").value("preference new name"));
+      .andExpect(jsonPath("$.id").exists())
+      .andExpect(jsonPath("$.id").isString())
+      .andExpect(jsonPath("$.id").isNotEmpty())
+      .andExpect(jsonPath("$.name").value("preference new name"));
     assertEquals(1, repository.findAll().size());
   }
 
