@@ -18,7 +18,6 @@ import static java.util.UUID.randomUUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -80,14 +79,14 @@ public class PreferencesControllerTest {
     mvc
       .perform(get(baseUrl))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.[0].id").exists())
-      .andExpect(jsonPath("$.[0].id").isString())
-      .andExpect(jsonPath("$.[0].id").isNotEmpty())
-      .andExpect(jsonPath("$.[0].name").value("preference1"))
-      .andExpect(jsonPath("$.[1].id").exists())
-      .andExpect(jsonPath("$.[1].id").isString())
-      .andExpect(jsonPath("$.[1].id").isNotEmpty())
-      .andExpect(jsonPath("$.[1].name").value("preference2"));
+      .andExpect(jsonPath("$.[0].preference.id").exists())
+      .andExpect(jsonPath("$.[0].preference.id").isString())
+      .andExpect(jsonPath("$.[0].preference.id").isNotEmpty())
+      .andExpect(jsonPath("$.[0].preference.name").value("preference1"))
+      .andExpect(jsonPath("$.[1].preference.id").exists())
+      .andExpect(jsonPath("$.[1].preference.id").isString())
+      .andExpect(jsonPath("$.[1].preference.id").isNotEmpty())
+      .andExpect(jsonPath("$.[1].preference.name").value("preference2"));
   }
 
   @Test
@@ -99,13 +98,12 @@ public class PreferencesControllerTest {
     mvc
       .perform(get(baseUrl + "/" + id))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.id").exists())
-      .andExpect(jsonPath("$.id").isString())
-      .andExpect(jsonPath("$.id").isNotEmpty())
-      .andExpect(jsonPath("$.name").value("preference1"));
+      .andExpect(jsonPath("$.preference.id").exists())
+      .andExpect(jsonPath("$.preference.id").isString())
+      .andExpect(jsonPath("$.preference.id").isNotEmpty())
+      .andExpect(jsonPath("$.preference.name").value("preference1"));
   }
 
-  // TODO: 10-Apr-23 Change API result if preference not found
   @Test
   @DisplayName("Should return HTTP 404 NOT FOUND when not finding the preference id")
   void getPreferenceTest3() throws Exception {
@@ -113,10 +111,10 @@ public class PreferencesControllerTest {
     assertEquals(1, repository.findAll().size());
     mvc
       .perform(get(baseUrl + "/" + randomUUID()))
-      .andExpect(status().isNotFound())
-      .andDo(print());
+      .andExpect(status().isNotFound());
   }
 
+  // TODO: 21-Apr-23 Define a business logic to update a preference: by id or by name.
   @Test
   @DisplayName("Should return HTTP 200 when updating existing preference")
   void updatePreferenceTest1() throws Exception {
@@ -128,10 +126,10 @@ public class PreferencesControllerTest {
           .contentType(APPLICATION_JSON)
           .content(objToJson(new PreferenceRequest("preference new name"))))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.id").exists())
-      .andExpect(jsonPath("$.id").isString())
-      .andExpect(jsonPath("$.id").isNotEmpty())
-      .andExpect(jsonPath("$.name").value("preference new name"));
+      .andExpect(jsonPath("$.preference.id").exists())
+      .andExpect(jsonPath("$.preference.id").isString())
+      .andExpect(jsonPath("$.preference.id").isNotEmpty())
+      .andExpect(jsonPath("$.preference.name").value("preference new name"));
     assertEquals(1, repository.findAll().size());
   }
 
