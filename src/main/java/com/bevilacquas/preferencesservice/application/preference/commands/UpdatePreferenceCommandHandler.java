@@ -18,6 +18,10 @@ public class UpdatePreferenceCommandHandler implements Command.Handler<UpdatePre
 
   @Override
   public PreferenceResponse handle(UpdatePreferenceCommand command) {
-    return new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr())));
+    return
+      repo
+        .findByName(command.pr().name())
+        .map(p -> new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr()))))
+        .orElse(null);
   }
 }
