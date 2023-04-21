@@ -1,6 +1,7 @@
 package com.bevilacquas.preferencesservice.application.preference.commands;
 
 import an.awesome.pipelinr.Command;
+import com.bevilacquas.preferencesservice.application.preference.PreferenceRequest;
 import com.bevilacquas.preferencesservice.application.preference.PreferenceResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,11 @@ public class CreatePreferenceCommandHandler implements Command.Handler<CreatePre
 
   @Override
   public PreferenceResponse handle(CreatePreferenceCommand command) {
-    return new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr())));
+    if(validatePreferenceRequest(command.pr())) return new PreferenceResponse(repo.save(buildFromPreferenceRequest(command.pr())));
+    else return null;
+  }
+
+  private boolean validatePreferenceRequest(PreferenceRequest pr) {
+    return pr.name() != null && !pr.name().isEmpty();
   }
 }

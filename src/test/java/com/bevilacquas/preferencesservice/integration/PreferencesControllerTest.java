@@ -57,7 +57,6 @@ public class PreferencesControllerTest {
     assertEquals(1, repository.findAll().size());
   }
 
-  // TODO: 10-Apr-23 Add business validation to check if the preference name is not empty.
   @Test
   @DisplayName("Should receive HTTP 400 Bad Request when receive a request with empty preference name")
   void createPreferenceTest2() throws Exception {
@@ -67,9 +66,8 @@ public class PreferencesControllerTest {
         post(baseUrl)
           .contentType(APPLICATION_JSON)
           .content(objToJson(new PreferenceRequest(""))))
-      .andExpect(status().isBadRequest())
-      .andDo(print());
-    assertEquals(1, repository.findAll().size());
+      .andExpect(status().isBadRequest());
+    assertEquals(0, repository.findAll().size());
   }
 
   @Test

@@ -41,7 +41,9 @@ public class PreferencesController implements Command<PreferenceResponse> {
 
   @PostMapping
   public ResponseEntity<PreferenceResponse> createPreference(@RequestBody PreferenceRequest pr) {
-    return new ResponseEntity<>(new CreatePreferenceCommand(pr).execute(pipeline), CREATED);
+    var result = new CreatePreferenceCommand(pr).execute(pipeline);
+    if(result != null) return new ResponseEntity<>(result, CREATED);
+    else return new ResponseEntity<>(BAD_REQUEST);
   }
 
   @PutMapping
