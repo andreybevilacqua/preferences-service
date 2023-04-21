@@ -4,7 +4,9 @@ import static com.bevilacquas.preferencesservice.domain.entities.UniversalPrefer
 
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UniversalPreferencesRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DeleteUniversalSolutionPreferenceCommandHandler implements Command.Handler<DeleteUniversalSolutionPreferenceCommand, Boolean> {
 
   private final UniversalPreferencesRepository repo;

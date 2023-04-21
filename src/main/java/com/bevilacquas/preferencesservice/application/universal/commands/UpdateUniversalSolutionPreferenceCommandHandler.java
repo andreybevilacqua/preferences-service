@@ -6,7 +6,9 @@ import static com.bevilacquas.preferencesservice.domain.entities.UniversalPrefer
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UniversalPreferencesRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UpdateUniversalSolutionPreferenceCommandHandler implements Command.Handler<UpdateUniversalSolutionPreferenceCommand, UniversalPreferenceResponse> {
 
   private final UniversalPreferencesRepository repo;
