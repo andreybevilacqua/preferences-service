@@ -3,9 +3,8 @@ package com.bevilacquas.preferencesservice.application.solution.queries;
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.solution.SolutionResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.SolutionRepository;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 @Component
 public class GetAllSolutionsQueryHandler implements Command.Handler<GetAllSolutionsQuery, List<SolutionResponse>> {

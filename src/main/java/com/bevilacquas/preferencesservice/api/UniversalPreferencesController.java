@@ -4,7 +4,6 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 import an.awesome.pipelinr.Pipeline;
-import com.bevilacquas.preferencesservice.application.solution.commands.DeleteSolutionCommand;
 import com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceRequest;
 import com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse;
 import com.bevilacquas.preferencesservice.application.universal.commands.CreateUniversalSolutionPreferenceCommand;

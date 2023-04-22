@@ -1,7 +1,6 @@
 package com.bevilacquas.preferencesservice.application.solution.commands;
 
 import an.awesome.pipelinr.Command;
-import com.bevilacquas.preferencesservice.domain.entities.Solution;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.SolutionRepository;
 import org.springframework.stereotype.Component;
 

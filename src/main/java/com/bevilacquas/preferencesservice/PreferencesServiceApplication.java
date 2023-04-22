@@ -1,5 +1,8 @@
 package com.bevilacquas.preferencesservice;
 
+import static java.util.List.of;
+import static java.util.UUID.randomUUID;
+
 import com.bevilacquas.preferencesservice.domain.entities.Preference;
 import com.bevilacquas.preferencesservice.domain.entities.User;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
@@ -8,9 +11,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import static java.util.List.of;
-import static java.util.UUID.randomUUID;
 
 @SpringBootApplication
 public class PreferencesServiceApplication {

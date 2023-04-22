@@ -1,13 +1,10 @@
 package com.bevilacquas.preferencesservice.application.universal.queries;
 
-import static com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse.*;
-
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UniversalPreferencesRepository;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 @Component
 public class GetAllUniversalPreferencesQueryHandler implements

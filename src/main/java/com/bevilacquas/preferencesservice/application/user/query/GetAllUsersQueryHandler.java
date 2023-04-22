@@ -1,13 +1,12 @@
 package com.bevilacquas.preferencesservice.application.user.query;
 
+import static java.util.stream.Collectors.toList;
+
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.user.UserResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UsersRepository;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
+import org.springframework.stereotype.Component;
 
 @Component
 public class GetAllUsersQueryHandler implements Command.Handler<GetAllUsersQuery, List<UserResponse>>{

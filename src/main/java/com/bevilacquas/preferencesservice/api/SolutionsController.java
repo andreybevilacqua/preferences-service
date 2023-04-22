@@ -1,5 +1,11 @@
 package com.bevilacquas.preferencesservice.api;
 
+import static java.util.UUID.fromString;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
+
 import an.awesome.pipelinr.Pipeline;
 import com.bevilacquas.preferencesservice.application.solution.SolutionRequest;
 import com.bevilacquas.preferencesservice.application.solution.SolutionResponse;
@@ -8,13 +14,16 @@ import com.bevilacquas.preferencesservice.application.solution.commands.DeleteSo
 import com.bevilacquas.preferencesservice.application.solution.commands.UpdateSolutionCommand;
 import com.bevilacquas.preferencesservice.application.solution.queries.GetAllSolutionsQuery;
 import com.bevilacquas.preferencesservice.application.solution.queries.GetSolutionByIdQuery;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
-import static java.util.UUID.fromString;
-import static org.springframework.http.HttpStatus.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/solutions")

@@ -1,13 +1,12 @@
 package com.bevilacquas.preferencesservice.domain.entities;
 
+import static java.util.UUID.randomUUID;
+
 import com.bevilacquas.preferencesservice.application.user.UserRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 import java.util.UUID;
-
-import static java.util.UUID.randomUUID;
 
 @Entity(name = "UserApp")
 public class User {

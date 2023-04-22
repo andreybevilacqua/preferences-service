@@ -1,12 +1,12 @@
 package com.bevilacquas.preferencesservice.application.user.command;
 
+import static com.bevilacquas.preferencesservice.application.user.UserResponse.buildFromUser;
+import static com.bevilacquas.preferencesservice.domain.entities.User.buildFromUserRequest;
+
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.user.UserResponse;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UsersRepository;
 import org.springframework.stereotype.Component;
-
-import static com.bevilacquas.preferencesservice.application.user.UserResponse.buildFromUser;
-import static com.bevilacquas.preferencesservice.domain.entities.User.buildFromUserRequest;
 
 @Component
 public class CreateUserCommandHandler implements Command.Handler<CreateUserCommand, UserResponse>{
