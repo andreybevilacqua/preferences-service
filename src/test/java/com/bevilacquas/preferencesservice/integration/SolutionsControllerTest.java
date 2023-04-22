@@ -73,7 +73,7 @@ public class SolutionsControllerTest {
 
   @Test
   @DisplayName("Should receive all solutions")
-  void getSolutionTest1() throws Exception {
+  void getSolutionTest_shouldReturnAllSolutions() throws Exception {
     repository.saveAll(
         of(new Solution(randomUUID(), "solution1"), new Solution(randomUUID(), "solution2"))
     );
@@ -93,7 +93,7 @@ public class SolutionsControllerTest {
 
   @Test
   @DisplayName("Should find solution by id")
-  void getSolutionTest2() throws Exception {
+  void getSolutionTest_shouldReturnSolution() throws Exception {
     var id = randomUUID();
     repository.save(new Solution(id, "solution1"));
     assertEquals(1, repository.findAll().size());
@@ -108,7 +108,7 @@ public class SolutionsControllerTest {
 
   @Test
   @DisplayName("Should return HTTP 404 NOT FOUND when not finding the solution id")
-  void getSolutionTest3() throws Exception {
+  void getSolutionTest_shouldReturnNotFound() throws Exception {
     repository.save(new Solution(randomUUID(), "solution1"));
     assertEquals(1, repository.findAll().size());
     mvc
@@ -119,7 +119,7 @@ public class SolutionsControllerTest {
   // TODO: 21-Apr-23 Define a business logic to update a solution: by id or by name.
   @Test
   @DisplayName("Should return HTTP 200 when updating existing solution")
-  void updateSolutionTest1() throws Exception {
+  void updateSolutionTest_shouldReturnOk() throws Exception {
     repository.save(new Solution(randomUUID(), "solution1"));
     assertEquals(1, repository.findAll().size());
     mvc
@@ -137,7 +137,7 @@ public class SolutionsControllerTest {
 
   @Test
   @DisplayName("Should return HTTP 200 when deleting a solution")
-  void deleteSolutionTest1() throws Exception {
+  void deleteSolutionTest_shouldReturnOk() throws Exception {
     var p = new Solution(randomUUID(), "solution1");
     repository.save(p);
     assertEquals(1, repository.findAll().size());

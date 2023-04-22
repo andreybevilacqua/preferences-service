@@ -41,7 +41,7 @@ public class PreferencesControllerTest {
 
   @Test
   @DisplayName("Should create new preference")
-  void createPreferenceTest1() throws Exception {
+  void createPreferenceTest_shouldCreatePreference() throws Exception {
     assertEquals(0, repository.findAll().size());
     mvc
       .perform(
@@ -58,7 +58,7 @@ public class PreferencesControllerTest {
 
   @Test
   @DisplayName("Should receive HTTP 400 Bad Request when receive a request with empty preference name")
-  void createPreferenceTest2() throws Exception {
+  void createPreferenceWithoutName_shouldReturnBadRequest() throws Exception {
     assertEquals(0, repository.findAll().size());
     mvc
       .perform(
@@ -71,7 +71,7 @@ public class PreferencesControllerTest {
 
   @Test
   @DisplayName("Should receive all preferences")
-  void getPreferenceTest1() throws Exception {
+  void getPreferenceTest_shouldReturnAllPreferences() throws Exception {
     repository.saveAll(
         of(new Preference(randomUUID(), "preference1"), new Preference(randomUUID(), "preference2"))
     );
@@ -91,7 +91,7 @@ public class PreferencesControllerTest {
 
   @Test
   @DisplayName("Should find preference by id")
-  void getPreferenceTest2() throws Exception {
+  void getPreferenceTest_shouldReturnPreference() throws Exception {
     var id = randomUUID();
     repository.save(new Preference(id, "preference1"));
     assertEquals(1, repository.findAll().size());
@@ -106,7 +106,7 @@ public class PreferencesControllerTest {
 
   @Test
   @DisplayName("Should return HTTP 404 NOT FOUND when not finding the preference id")
-  void getPreferenceTest3() throws Exception {
+  void getPreferenceTest_shouldReturnNotFound() throws Exception {
     repository.save(new Preference(randomUUID(), "preference1"));
     assertEquals(1, repository.findAll().size());
     mvc
@@ -117,7 +117,7 @@ public class PreferencesControllerTest {
   // TODO: 21-Apr-23 Define a business logic to update a preference: by id or by name.
   @Test
   @DisplayName("Should return HTTP 200 when updating existing preference")
-  void updatePreferenceTest1() throws Exception {
+  void updatePreferenceTest_shouldReturnOk() throws Exception {
     repository.save(new Preference(randomUUID(), "preference1"));
     assertEquals(1, repository.findAll().size());
     mvc
@@ -135,7 +135,7 @@ public class PreferencesControllerTest {
 
   @Test
   @DisplayName("Should return HTTP 200 when deleting a preference")
-  void deletePreferenceTest1() throws Exception {
+  void deletePreferenceTest_shouldReturnOk() throws Exception {
     var p = new Preference(randomUUID(), "preference1");
     repository.save(p);
     assertEquals(1, repository.findAll().size());
