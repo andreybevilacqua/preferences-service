@@ -33,7 +33,7 @@ public class User {
         return name;
     }
 
-    public static User buildFromUserRequest(UserRequest uq) {
-        return new User(randomUUID(), uq.name());
+    public static User buildFromUserRequest(UserRequest ur) {
+        return new User(randomUUID(), ur.name());
     }
 }
