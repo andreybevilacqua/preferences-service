@@ -6,7 +6,10 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface UniversalPreferencesRepository extends JpaRepository<UniversalPreference, UUID> {
-  @Query("SELECT up FROM Universal_Preference up")
-  List<UniversalPreference> getAllUniversalPreferences();
+public interface UniversalPreferencesRepository extends JpaRepository<UniversalPreference, String> {
+
+  @Query(value =
+      "DELETE FROM Universal_Preference up " +
+      "WHERE up.name = :name ")
+  void deleteByName(String name);
 }

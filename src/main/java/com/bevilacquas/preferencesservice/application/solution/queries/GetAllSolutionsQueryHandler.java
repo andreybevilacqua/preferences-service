@@ -18,7 +18,7 @@ public class GetAllSolutionsQueryHandler implements Command.Handler<GetAllSoluti
   @Override
   public List<SolutionResponse> handle(GetAllSolutionsQuery command) {
     return repo
-        .getAllSolutions()
+        .findAll()
         .stream()
         .map(SolutionResponse::newSolutionResponseFrom)
         .toList();

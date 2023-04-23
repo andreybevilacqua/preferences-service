@@ -1,6 +1,5 @@
 package com.bevilacquas.preferencesservice.integration;
 
-import com.bevilacquas.preferencesservice.application.preference.PreferenceRequest;
 import com.bevilacquas.preferencesservice.application.solution.SolutionRequest;
 import com.bevilacquas.preferencesservice.domain.entities.Preference;
 import com.bevilacquas.preferencesservice.domain.entities.Solution;

@@ -18,9 +18,11 @@ public class GetAllUniversalPreferencesQueryHandler implements
 
   @Override
   public List<UniversalPreferenceResponse> handle(GetAllUniversalPreferencesQuery command) {
-    return repo.getAllUniversalPreferences()
-        .stream()
-        .map(UniversalPreferenceResponse::buildFromUniversalPreference)
-        .toList();
+    return
+        repo
+            .findAll()
+            .stream()
+            .map(UniversalPreferenceResponse::newUniversalPreferenceResponseFrom)
+            .toList();
   }
 }

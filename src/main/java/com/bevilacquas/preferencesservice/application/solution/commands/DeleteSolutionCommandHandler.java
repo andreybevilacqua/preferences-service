@@ -15,12 +15,10 @@ public class DeleteSolutionCommandHandler implements Command.Handler<DeleteSolut
 
   @Override
   public Boolean handle(DeleteSolutionCommand command) {
+    if(command.name().isEmpty()) return false;
     try{
-      var optSolution = repo.findByName(command.name());
-      if(optSolution.isPresent()) {
-        repo.delete(optSolution.get());
-        return true;
-      } else return false;
+      repo.deleteByName(command.name());
+      return true;
     } catch (Exception e) {
       System.out.println("Error deleting solution: " + e.getMessage());
       return false;

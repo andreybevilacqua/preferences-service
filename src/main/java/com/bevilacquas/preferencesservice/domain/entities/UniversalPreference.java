@@ -1,34 +1,60 @@
 package com.bevilacquas.preferencesservice.domain.entities;
 
-import static java.util.UUID.randomUUID;
-
 import com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceRequest;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Entity(name = "Universal_Preference")
 public class UniversalPreference {
+
   @Id
-  private UUID id;
   private String name;
+
+  @Column
+  private String value;
+
+  @Column
+  private boolean active;
+
+  @Column(name = "created_date")
+  private LocalDateTime createdDate;
+
+  @Column(name = "updated_date")
+  private LocalDateTime updatedDate;
 
   public UniversalPreference() {}
 
-  public UniversalPreference(UUID id, String name) {
-    this.id = id;
+  public UniversalPreference(String name, String value, boolean active, LocalDateTime createdDate, LocalDateTime updatedDate) {
     this.name = name;
+    this.value = value;
+    this.active = active;
+    this.createdDate = createdDate;
+    this.updatedDate = updatedDate;
   }
 
-  public UUID getId() {
-    return id;
+  public static UniversalPreference newUniversalPreferenceFrom(UniversalPreferenceRequest usr, LocalDateTime createdDate, LocalDateTime updatedDate) {
+    return new UniversalPreference(usr.name(), usr.value(), usr.active(), createdDate, updatedDate);
   }
 
   public String getName() {
     return name;
   }
 
-  public static UniversalPreference buildFromUniversalPreferenceRequest(UniversalPreferenceRequest usr) {
-    return new UniversalPreference(randomUUID(), usr.name());
+  public String getValue() {
+    return value;
+  }
+
+  public boolean isActive() {
+    return active;
+  }
+
+  public LocalDateTime getCreatedDate() {
+    return createdDate;
+  }
+
+  public LocalDateTime getUpdatedDate() {
+    return updatedDate;
   }
 }

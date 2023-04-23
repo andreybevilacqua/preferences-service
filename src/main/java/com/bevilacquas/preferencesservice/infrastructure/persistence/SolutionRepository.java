@@ -7,10 +7,11 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface SolutionRepository extends JpaRepository<Solution, UUID> {
+public interface SolutionRepository extends JpaRepository<Solution, String> {
 
-  @Query("SELECT s FROM Solution s")
-  List<Solution> getAllSolutions();
+  @Query(value =
+      "DELETE FROM Solution s " +
+      "WHERE s.name = :name ")
+  void deleteByName(String name);
 
-  Optional<Solution> findByName(String name);
 }

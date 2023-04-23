@@ -22,7 +22,7 @@ public class UpdateSolutionCommandHandler implements Command.Handler<UpdateSolut
   public SolutionResponse handle(UpdateSolutionCommand command) {
     return
       repo
-        .findByName(command.sr().name())
+        .findById(command.sr().name())
         .map(s -> newSolutionResponseFrom(
             repo.save(
                 new Solution(s.getName(), command.sr().type(), command.sr().active(), s.getCreatedDate(), LocalDateTime.now())))

@@ -1,12 +1,11 @@
 package com.bevilacquas.preferencesservice.application.universal;
 
 import com.bevilacquas.preferencesservice.domain.entities.UniversalPreference;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
-public record UniversalPreferenceResponse(UUID id, String name) {
+public record UniversalPreferenceResponse(String name, String value, boolean active, LocalDateTime createdDate, LocalDateTime updateDate) {
 
-  public static UniversalPreferenceResponse buildFromUniversalPreference(UniversalPreference usr) {
-    return new UniversalPreferenceResponse(usr.getId(), usr.getName());
+  public static UniversalPreferenceResponse newUniversalPreferenceResponseFrom(UniversalPreference usr) {
+    return new UniversalPreferenceResponse(usr.getName(), usr.getValue(), usr.isActive(), usr.getCreatedDate(), usr.getUpdatedDate());
   }
-
 }

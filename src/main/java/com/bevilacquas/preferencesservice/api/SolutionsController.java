@@ -1,6 +1,5 @@
 package com.bevilacquas.preferencesservice.api;
 
-import static java.util.UUID.fromString;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -40,7 +39,7 @@ public class SolutionsController {
 
   @GetMapping("/{id}")
   public ResponseEntity<SolutionResponse> getSolutionsById(@PathVariable String id) {
-    var result = new GetSolutionByIdQuery(fromString(id)).execute(pipeline);
+    var result = new GetSolutionByIdQuery(id).execute(pipeline);
     if(result != null) return new ResponseEntity<>(result, OK);
     else return new ResponseEntity<>(NOT_FOUND);
   }

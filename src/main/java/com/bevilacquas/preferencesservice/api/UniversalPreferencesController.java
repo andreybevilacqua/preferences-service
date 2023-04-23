@@ -12,7 +12,6 @@ import com.bevilacquas.preferencesservice.application.universal.commands.UpdateU
 import com.bevilacquas.preferencesservice.application.universal.queries.GetAllUniversalPreferencesQuery;
 import com.bevilacquas.preferencesservice.application.universal.queries.GetUniversalPreferenceByIdQuery;
 import java.util.List;
-import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,9 +34,9 @@ public class UniversalPreferencesController {
     return new ResponseEntity<>(new GetAllUniversalPreferencesQuery().execute(pipeline), OK);
   }
 
-  @GetMapping("/{id}")
-  public ResponseEntity<UniversalPreferenceResponse> getUniversalPreferencesById(@PathVariable String id) {
-    return new ResponseEntity<>(new GetUniversalPreferenceByIdQuery(UUID.fromString(id)).execute(pipeline), OK);
+  @GetMapping("/{name}")
+  public ResponseEntity<UniversalPreferenceResponse> getUniversalPreferencesById(@PathVariable String name) {
+    return new ResponseEntity<>(new GetUniversalPreferenceByIdQuery(name).execute(pipeline), OK);
   }
 
   @PostMapping
@@ -51,7 +50,7 @@ public class UniversalPreferencesController {
   }
 
   @DeleteMapping
-  public ResponseEntity<Boolean> deleteUniversalPreference(@RequestBody UniversalPreferenceRequest upr) {
-    return new ResponseEntity<>(new DeleteUniversalSolutionPreferenceCommand(upr).execute(pipeline), OK);
+  public ResponseEntity<Boolean> deleteUniversalPreference(@RequestBody String name) {
+    return new ResponseEntity<>(new DeleteUniversalSolutionPreferenceCommand(name).execute(pipeline), OK);
   }
 }

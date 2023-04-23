@@ -1,7 +1,8 @@
 package com.bevilacquas.preferencesservice.application.universal.commands;
 
-import static com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse.buildFromUniversalPreference;
-import static com.bevilacquas.preferencesservice.domain.entities.UniversalPreference.buildFromUniversalPreferenceRequest;
+import static com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse.newUniversalPreferenceResponseFrom;
+import static com.bevilacquas.preferencesservice.domain.entities.UniversalPreference.newUniversalPreferenceFrom;
+import static java.time.LocalDateTime.now;
 
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.universal.UniversalPreferenceResponse;
@@ -16,11 +17,13 @@ public class CreateUniversalSolutionPreferenceCommandHandler implements Command.
   public CreateUniversalSolutionPreferenceCommandHandler(UniversalPreferencesRepository repo) {
     this.repo = repo;
   }
+
   @Override
   public UniversalPreferenceResponse handle(CreateUniversalSolutionPreferenceCommand command) {
-    return buildFromUniversalPreference(
+    return newUniversalPreferenceResponseFrom(
         repo.save(
-            buildFromUniversalPreferenceRequest(command.upr()))
+            newUniversalPreferenceFrom(command.upr(), now(), now())
+        )
     );
   }
 }
