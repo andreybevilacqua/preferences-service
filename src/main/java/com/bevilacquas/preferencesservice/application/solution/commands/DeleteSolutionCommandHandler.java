@@ -12,10 +12,11 @@ public class DeleteSolutionCommandHandler implements Command.Handler<DeleteSolut
   public DeleteSolutionCommandHandler(SolutionRepository repo) {
     this.repo = repo;
   }
+
   @Override
   public Boolean handle(DeleteSolutionCommand command) {
     try{
-      var optSolution = repo.findByName(command.sr().name());
+      var optSolution = repo.findByName(command.name());
       if(optSolution.isPresent()) {
         repo.delete(optSolution.get());
         return true;

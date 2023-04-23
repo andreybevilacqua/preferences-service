@@ -1,7 +1,8 @@
 package com.bevilacquas.preferencesservice.application.solution.commands;
 
-import static com.bevilacquas.preferencesservice.application.solution.SolutionResponse.buildFromSolution;
-import static com.bevilacquas.preferencesservice.domain.entities.Solution.buildFromSolutionRequest;
+import static com.bevilacquas.preferencesservice.application.solution.SolutionResponse.newSolutionResponseFrom;
+import static com.bevilacquas.preferencesservice.domain.entities.Solution.newSolutionFrom;
+import static java.time.LocalDateTime.now;
 
 import an.awesome.pipelinr.Command;
 import com.bevilacquas.preferencesservice.application.solution.SolutionRequest;
@@ -21,7 +22,7 @@ public class CreateSolutionCommandHandler implements Command.Handler<CreateSolut
 
   @Override
   public SolutionResponse handle(CreateSolutionCommand command) {
-    if(validateSolutionRequest(command.sr())) return buildFromSolution(repo.save(buildFromSolutionRequest(command.sr())));
+    if(validateSolutionRequest(command.sr())) return newSolutionResponseFrom(repo.save(newSolutionFrom(command.sr(), now(), now())));
     else return null;
   }
 

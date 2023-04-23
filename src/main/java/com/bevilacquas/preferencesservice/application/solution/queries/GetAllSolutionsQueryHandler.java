@@ -20,7 +20,7 @@ public class GetAllSolutionsQueryHandler implements Command.Handler<GetAllSoluti
     return repo
         .getAllSolutions()
         .stream()
-        .map(SolutionResponse::buildFromSolution)
+        .map(SolutionResponse::newSolutionResponseFrom)
         .toList();
   }
 }

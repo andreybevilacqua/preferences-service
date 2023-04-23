@@ -58,7 +58,7 @@ public class SolutionsController {
   }
 
   @DeleteMapping
-  public ResponseEntity<Boolean> deleteSolution(@RequestBody SolutionRequest sr) {
-    return new ResponseEntity<>(new DeleteSolutionCommand(sr).execute(pipeline), OK);
+  public ResponseEntity<Boolean> deleteSolution(@RequestBody String name) {
+    return new ResponseEntity<>(new DeleteSolutionCommand(name).execute(pipeline), OK);
   }
 }

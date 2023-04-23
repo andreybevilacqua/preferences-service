@@ -19,7 +19,7 @@ public class GetSolutionByIdQueryHandler implements Command.Handler<GetSolutionB
     return
       repo
         .findById(command.id())
-        .map(SolutionResponse::buildFromSolution)
+        .map(SolutionResponse::newSolutionResponseFrom)
         .orElse(null);
   }
 }
