@@ -3,7 +3,6 @@ package com.bevilacquas.preferencesservice;
 import static java.util.List.of;
 import static java.util.UUID.randomUUID;
 
-import com.bevilacquas.preferencesservice.domain.entities.Preference;
 import com.bevilacquas.preferencesservice.domain.entities.User;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.PreferencesRepository;
 import com.bevilacquas.preferencesservice.infrastructure.persistence.UsersRepository;
@@ -21,11 +20,11 @@ public class PreferencesServiceApplication {
 
 	@Bean
 	ApplicationRunner run(PreferencesRepository preferencesRepo, UsersRepository usersRepo) {
-		var p1 = new Preference(randomUUID(), "Preference A");
+//		var p1 = new Preference("Preference A");
 		var u1 = new User(randomUUID(), "Andrey");
 		var u2 = new User(randomUUID(), "Vinicius");
 		return args -> {
-			preferencesRepo.save(p1);
+//			preferencesRepo.save(p1);
 			usersRepo.saveAll(of(u1, u2));
 		};
 	}
